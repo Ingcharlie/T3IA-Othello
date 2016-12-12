@@ -22,11 +22,10 @@ class Biorr:
 		from itertools import izip
 		moves = board.valid_moves(self.color)
 		notas = [None]*len(moves) #notas dada pela funcao de avaliacao para cada movimento (notas[i] para moves[i])
-		#print "moves: ",moves
 		
-		#horrivel, mas...
+		#no folha
 		if len(moves) == 0:
-			return 0
+			return self.avalia(self.color, board)
 		
 		if(nivel == self.NIVEL_MAXIMO):
 			for move, i in izip(moves,range(len(moves))): #percorre moves e lista de indices ao msm tempo
@@ -64,3 +63,4 @@ class Biorr:
 		moves = board.valid_moves(self.color)
 		
 		return moves[indice]
+
