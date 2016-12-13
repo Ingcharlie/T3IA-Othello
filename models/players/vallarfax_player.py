@@ -1,20 +1,21 @@
 #Universidade Federal do Rio de Janeiro
 #Data: 12/12/2016
 #Alunos: Eryck Pedro, Hugo Faria, Lucas Murakami
-#Inteligencia Artificial - Othello/Reversi - Jogador Biorr
+#Inteligencia Artificial - Othello/Reversi - Jogador Vallarfax
 
-class Biorr:
+class Vallarfax:
 	NIVEL_MAXIMO = 4
 	def __init__(self, color):
 		self.color = color
-
+	
 	def avalia(self, cor, board):
-		score = board.score()
-		if (cor == board.WHITE):
-			return score[0]-score[1]
-		else:
-			return score[1]-score[0]
-
+		preferencias = [[99,-8,8,6,6,8,-8,99],[-8,-24,-4,-3,-3,-4,-24,-8],[8,-4,7,4,4,7,-4,8],[6,-3,4,0,0,4,-3,6],[6,-3,4,0,0,4,-3,6],[8,-4,7,4,4,7,-4,8],[-8,-24,-4,-3,-3,-4,-24,-8],[99,-8,8,6,6,8,-8,99]]
+		valor = 0
+		for i in range(1,9):
+			for j in range(1,9):
+				if(board.board[i][j] == cor):
+					valor += preferencias[i-1][j-1]
+		return valor
 		
 	def minimax(self, board, corOponente, nivel):
 		from itertools import izip
